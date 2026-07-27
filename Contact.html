@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BILA ACADEMY</title>
+
+        <!-- Google Fonts: Poppins & Lato -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+       <div class="Navbar">
+           <div class="logo">
+                <a href="#"><img src="images/logo.png" alt="logo" title="Logo"></a>
+                 <!-- <a href="#">BILA</a> -->
+            </div>
+
+            
+    <!-- Hamburger Icon (added) -->
+    <div class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+        <div class="nav-container" id="navContainer">
+
+            <div class="ul">
+              <a href="index.html"><div class="li">Home</div></a>
+              <a href="About Us.html"><div class="li">About Us</div></a>
+              <a href="Gallary.html"><div class="li">Gallary</div></a>
+              <a href="Contact.html"><div class="li">Contact</div></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add overlay div after Navbar -->
+<div class="overlay" id="overlay"></div>
+
+    
+    <!-- ========== CONTACT HERO ========== -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1><span>Contact</span> Us</h1>
+            <p>We'd love to hear from you.</p>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT INFO & FORM ========== -->
+    <section>
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <div class="label">Phone</div>
+                            <div class="value">+234 811 9271 497 </div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <div class="label">Email</div>
+                            <div class="value">blessingiyareacademy@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-pin"></i>
+                        <div>
+                            <div class="label">Location</div>
+                            <div class="value">Benin, Nigeria</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <div class="label">Office Hours</div>
+                            <div class="value">Mon - Fri: 9:00 AM - 6:00 PM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm" method="post" data-netlify="true">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" placeholder="Enter your name" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="Enter your email" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number" />
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" placeholder="What is this about?" />
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Write your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+
+                      <!-- Success Message (Hidden by default) -->
+                     <div id="successMessage" class="success-message">
+                          <div class="success-icon">
+                             <i class="fas fa-check-circle"></i>
+                           </div>
+                          <h3>Message Sent Successfully! 🎉</h3>
+                            <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                            <button class="btn-submit" onclick="resetForm()">
+                                  <i class="fas fa-pen"></i> Send Another Message
+                            </button>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GOOGLE MAP ========== -->
+    <section style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">Find <span>Us</span></h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.70281637281!2d5.666991505533024!3d6.302723182804168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1040d43cb32ac32b%3A0x58e9d6dadf6a5532!2s146%20Nomayo%20St%2C%20Avbiama%2C%20Benin%20City%20300105%2C%20Edo!5e0!3m2!1sen!2sng!4v1784498067102!5m2!1sen!2sng"
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SOCIAL MEDIA ========== -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Connect With <span>Us</span></h2>
+            <div class="social-grid">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@bila2025-r8g?si=HH8uLv1s2I0CgvE7" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://wa.link/tgtbvn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4><i class="fas fa-user-plus"></i> Who can join BILA?</h4>
+                    <p>BILA is open to all believers, ministers, and emerging leaders who desire to grow spiritually and develop their leadership capacity.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fas fa-hand-holding-usd"></i> Is membership free?</h4>
+                    <p>Yes, basic membership is free. Some specialized programs may have a nominal fee to cover resources and materials.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fas fa-laptop"></i> Do you hold online mentorship?</h4>
+                    <p>Yes, we offer both in-person and online mentorship programs to accommodate participants from all over the world.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fas fa-chalkboard-teacher"></i> How do I become a mentor?</h4>
+                    <p>To become a mentor, you must complete our leadership training program and be recommended by a senior mentor. Contact us for more details.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+       
+   <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-grid">
+        <!-- Academy Logo + Short description -->
+        <div class="footer-brand">
+          <div class="logo">BILA<span>.</span></div>
+          <p>
+            Blessing Iyare Leadership Academy exists to raise spiritually mature 
+            leaders who influence their families, churches, communities, and nations 
+            through biblical mentorship and discipleship.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About Us.html">About</a></li>
+            <li><a href="Gallary.html">Gallery</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><i class="fas fa-phone-alt"></i> +234 811 9271 497</p>
+          <p><i class="fas fa-envelope"></i> blessingiyareacademy@gmail.com</p>
+          <p><i class="fas fa-map-pin"></i> Benin, Nigeria</p>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="footer-social">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@bila2025-r8g?si=HH8uLv1s2I0CgvE7" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://wa.link/tgtbvn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="footer-bottom">
+        &copy; <Spann id="currentYear">2026</Spann> <span>Blessing Iyare Leadership Academy</span>. All Rights Reserved.
+      </div>
+
+    </div>
+  </footer>
+    
+  <script src="JS/Script.js"></script>
+</body>
+</html>

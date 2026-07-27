@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BILA ACADEMY</title>
+
+        <!-- Google Fonts: Poppins & Lato -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Lato:wght@400;700&display=swap"
+            rel="stylesheet" />
+        <!-- Font Awesome 6 (free) -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+        <link rel="stylesheet" href="CSS/style.css">
+    </head>
+    <body>
+
+        <div class="Navbar">
+            <div class="logo">
+                <a href="#"><img src="images/logo.png" alt="logo"
+                        title="Logo"></a>
+                <!-- <a href="#">BILA</a> -->
+            </div>
+
+            <!-- Hamburger Icon (added) -->
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <div class="nav-container" id="navContainer">
+
+                <div class="ul">
+                    <a href="index.html"><div class="li">Home</div></a>
+                    <a href="About Us.html"><div class="li">About Us</div></a>
+                    <a href="Gallary.html"><div class="li">Gallary</div></a>
+                    <a href="Contact.html"><div class="li">Contact</div></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add overlay div after Navbar -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- ========== HERO BANNER ========== -->
+        <section class="gallery-hero">
+            <div class="container">
+                <h1><span>Gallery</span></h1>
+                <p>Moments of Transformation.</p>
+            </div>
+        </section>
+
+        <!-- ========== GALLERY SECTIONS ========== -->
+        <section>
+            <div class="container">
+
+                <!-- Training Sessions -->
+                <div class="gallery-section">
+                    <h3><i class="fas fa-chalkboard-teacher"></i> Training
+                        Sessions</h3>
+                    <div class="gallery-grid">
+                        <img src="images/training 1.jpg" alt="Training 1"
+                            loading="lazy" />
+                        <img src="images/training 2.jpg" alt="Training 2"
+                            loading="lazy" />
+                        <img src="images/training 3.jpg" alt="Training 3"
+                            loading="lazy" />
+                    </div>
+                </div>
+
+                <hr class="hr-light" />
+
+                <!-- Prayer Meetings -->
+                <div class="gallery-section">
+                    <h3><i class="fas fa-hands-praying"></i> Prayer
+                        Meetings</h3>
+                    <div class="gallery-grid">
+                        <img src="images/prayer 1.jpg" alt="Prayer 1"
+                            loading="lazy" />
+                        <img src="images/prayer 2.jpg" alt="Prayer 2"
+                            loading="lazy" />
+                        <img src="images/prayer 3.jpg" alt="Prayer 3"
+                            loading="lazy" />
+                    </div>
+                </div>
+
+                <hr class="hr-light" />
+
+                <!-- Leadership Conferences -->
+                <div class="gallery-section">
+                    <h3><i class="fas fa-users"></i> Leadership Conferences</h3>
+                    <div class="gallery-grid">
+                        <img src="images/leadership 1.jpg" alt="Conference 1"
+                            loading="lazy" />
+                        <img src="images/leadership 2.jpg" alt="Conference 2"
+                            loading="lazy" />
+                        <img src="images/leadership 3.jpg" alt="Conference 3"
+                            loading="lazy" />
+                    </div>
+                </div>
+
+                <hr class="hr-light" />
+
+                <!-- Graduations -->
+                <div class="gallery-section">
+                    <h3><i class="fas fa-graduation-cap"></i> Teaching Section</h3>
+                    <div class="gallery-grid">
+                        <img src="images/teach 1.jpg" alt="Graduation 1"
+                            loading="lazy" />
+                        <img src="images/teach 2.jpg" alt="Graduation 2"
+                            loading="lazy" />
+                        <img src="images/teach 3.jpg" alt="Graduation 3"
+                            loading="lazy" />
+                    </div>
+                </div>
+
+                <hr class="hr-light" />
+
+                <!-- Mentorship Classes -->
+                <div class="gallery-section">
+                    <h3><i class="fas fa-chalkboard"></i> Mentorship
+                        Classes</h3>
+                    <div class="gallery-grid">
+                        <img src="images/mentor 1.jpg" alt="Mentorship 1"
+                            loading="lazy" />
+                        <img src="images/mentor 2.jpg" alt="Mentorship 2"
+                            loading="lazy" />
+                        <img src="images/mentor 3.jpg" alt="Mentorship 3"
+                            loading="lazy" />
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========== LIGHTBOX ========== -->
+        <div class="lightbox" id="lightbox">
+            <button class="close-btn" id="closeLightbox"><i
+                    class="fas fa-times"></i></button>
+            <button class="prev-btn" id="prevBtn"><i
+                    class="fas fa-chevron-left"></i></button>
+            <button class="next-btn" id="nextBtn"><i
+                    class="fas fa-chevron-right"></i></button>
+            <img src alt="Lightbox Image" id="lightboxImg" />
+            <div class="counter" id="counter">1 / 1</div>
+        </div>
+
+        <!-- ========== FOOTER ========== -->
+        <footer class="footer">
+            <div class="footer-container">
+
+                <div class="footer-grid">
+                    <!-- Academy Logo + Short description -->
+                    <div class="footer-brand">
+                        <div class="logo">BILA<span>.</span></div>
+                        <p>
+                            Blessing Iyare Leadership Academy exists to raise
+                            spiritually mature
+                            leaders who influence their families, churches,
+                            communities, and nations
+                            through biblical mentorship and discipleship.
+                        </p>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="About Us.html">About</a></li>
+                            <li><a href="Gallary.html">Gallery</a></li>
+                            <li><a href="Contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="footer-contact">
+                        <h4>Contact</h4>
+                        <p><i class="fas fa-phone-alt"></i> +234 811 9271
+                            497</p>
+                        <p><i class="fas fa-envelope"></i>
+                            blessingiyareacademy@gmail.com </p>
+                        <p><i class="fas fa-map-pin"></i> Benin, Nigeria</p>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="footer-social">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a
+                                href="https://youtube.com/@bila2025-r8g?si=HH8uLv1s2I0CgvE7"
+                                aria-label="YouTube"><i
+                                    class="fab fa-youtube"></i></a>
+                            <a href="https://wa.link/tgtbvn"
+                                aria-label="WhatsApp"><i
+                                    class="fab fa-whatsapp"></i></a>
+                            <a href="#" aria-label="Telegram"><i
+                                    class="fab fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="footer-bottom">
+                    &copy; <spann id="currentYear">2026</spann> <span>Blessing
+                        Iyare Leadership Academy</span>. All Rights Reserved.
+                </div>
+
+            </div>
+        </footer>
+
+        <script src="JS/Script.js"></script>
+    </body>
+</html>
