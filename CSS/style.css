@@ -31,9 +31,10 @@ body{
 }
 
 .logo img{
-    width: 60px;
+    width: 130px;
     height: 60px;
     margin-left: 15px;
+    border-radius: 5px;
 }
 
 .ul{
@@ -1228,6 +1229,7 @@ body.menu-open {
             background: #F8F9FA;
             border-radius: 24px;
             padding: 2.5rem;
+            margin-left: 7px;
             border: 1px solid rgba(30, 58, 138, 0.06);
         }
         .contact-info h3 {
@@ -1271,6 +1273,7 @@ body.menu-open {
             background: #ffffff;
             border-radius: 24px;
             padding: 2.5rem;
+            margin-right: 5px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
             border: 1px solid rgba(30, 58, 138, 0.06);
         }
@@ -1544,6 +1547,7 @@ body.menu-open {
         right: 0;
     }
 
+
     .ul {
         flex-direction: column;
         align-items: center;
@@ -1700,11 +1704,19 @@ body.menu-open {
         gap: 2rem;
     }
 
-    .contact-info,
+      .contact-info{
+        padding: 1.5rem;
+        /* margin-right: 50px ; */
+      }
+
+
     .contact-form {
         padding: 1.5rem;
+        /* margin-right: 50px; */
+       
     }
 
+  
     .form-row {
         grid-template-columns: 1fr;
         gap: 1rem;
