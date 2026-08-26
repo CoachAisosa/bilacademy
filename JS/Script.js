@@ -103,16 +103,27 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Get form data
         const formData = new FormData(form);
-        const data = {
-            name: formData.get('name') || '',
-            email: formData.get('email') || '',
-            phone: formData.get('phone') || '',
-            subject: formData.get('subject') || '',
-            message: formData.get('message') || ''
-        };
+        // const data = {
+        //     name: formData.get('name') || '',
+        //     email: formData.get('email') || '',
+        //     phone: formData.get('phone') || '',
+        //     subject: formData.get('subject') || '',
+        //     message: formData.get('message') || ''
+        // };
         
-        console.log('📋 Form Data:', data);
-        
+        // console.log('📋 Form Data:', data);
+
+
+       // send form to netifly
+     const response = await fetch('/', {
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/x-www-from-urllencoded'
+        },
+        body: new URLSearchParams(formDAta).toString()
+     });
+
+
         // Simulate sending to server
         setTimeout(function() {
             showSuccess();
