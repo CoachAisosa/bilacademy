@@ -52,8 +52,8 @@
     <!-- Add overlay div after Navbar -->
 <div class="overlay" id="overlay"></div>
 
-    <!-- ===== HERO SECTION ===== -->
-  <section class="hero">
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
     <!-- Background image (large) -->
     <div class="hero-bg"></div>
     <!-- overlay for readability -->
@@ -61,20 +61,42 @@
 
     <!-- Hero content -->
     <div class="hero-content">
-      <h1 class="hero-headline">
-        Empowering Leaders,<br />
-        <span>Transforming Lives</span>
-      </h1>
-      <p class="hero-sub">
-        Raising generations of spiritual leaders through biblical mentorship, 
-        discipleship, and transformational leadership.
-      </p>
-      <div class="hero-buttons">
-        <a href="https://chat.whatsapp.com/CcaMIzOFxOt74kdMOtMyo8?s=cI&p=a&iIr=4&amv=0" class="btn btn-primary">Join Our Community</a>
-        <a href="About Us.html" class="btn btn-outline">Learn More</a>
-      </div>
+        
+        <!-- NEW: Split layout wrapper -->
+        <div class="hero-split">
+            
+            <!-- LEFT: Text content -->
+            <div class="hero-text">
+                <h1 class="hero-headline">
+                    Empowering Leaders,<br />
+                    <span>Transforming Lives</span>
+                </h1>
+                <p class="hero-sub">
+                    Raising generations of spiritual leaders through biblical mentorship, 
+                    discipleship, and transformational leadership.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://chat.whatsapp.com/CcaMIzOFxOt74kdMOtMyo8?s=cI&p=a&iIr=4&amv=0" class="btn btn-primary">Join Our Community</a>
+                    <a href="About Us.html" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+
+            <!-- RIGHT: Training Flyer (Clickable) -->
+            <div class="hero-flyer">
+                <a href="About Us.html" class="flyer-link" aria-label="View this month's training details">
+                    <img 
+                        src="images/training-flyer.jpg" 
+                        alt="BILA September Edition Training - Solo Pastoring" 
+                        class="flyer-image"
+                    />
+                </a>
+            </div>
+            
+        </div>
+        <!-- END split layout -->
+        
     </div>
-  </section>
+</section>
 
   <!-- ===== WELCOME SECTION ===== -->
   <section class="welcome-section">

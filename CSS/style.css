@@ -225,6 +225,132 @@ body.menu-open {
       transform: scale(1.02);
     }
 
+    /* ===== HERO SPLIT LAYOUT (Text + Flyer) ===== */
+.hero-split {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-text {
+    /* Text takes the left side */
+}
+
+/* ===== FLYER STYLES ===== */
+.hero-flyer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: flyerFloat 4s ease-in-out infinite;
+}
+
+.flyer-link {
+    display: block;
+    text-decoration: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    max-width: 380px;
+    width: 100%;
+    border: 3px solid rgba(212, 175, 55, 0.6);
+    position: relative;
+}
+
+.flyer-link:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 30px 70px rgba(212, 175, 55, 0.4);
+    border-color: #D4AF37;
+}
+
+.flyer-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 13px;
+}
+
+/* Subtle "click me" pulse effect */
+.flyer-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 13px;
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+    animation: flyerPulse 2.5s infinite;
+    pointer-events: none;
+}
+
+@keyframes flyerFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes flyerPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+/* ===== RESPONSIVE: Tablet ===== */
+@media screen and (max-width: 992px) {
+    .hero-split {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .hero-sub {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .hero-flyer {
+        max-width: 340px;
+        margin: 0 auto;
+    }
+}
+
+/* ===== RESPONSIVE: Mobile ===== */
+@media screen and (max-width: 768px) {
+    .hero-split {
+        gap: 2rem;
+    }
+    
+    .hero-flyer {
+        max-width: 300px;
+    }
+    
+    .flyer-link {
+        border-width: 2px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-flyer {
+        max-width: 260px;
+    }
+    
+    .hero-split {
+        gap: 1.5rem;
+    }
+}
+
     
     /* ---------- WELCOME SECTION ---------- */
     .welcome-section {
@@ -1545,6 +1671,11 @@ body.menu-open {
 
     .nav-container.active {
         right: 0;
+    }
+
+    .logo img{
+       width: 170px;
+       height: 30px;
     }
 
 
