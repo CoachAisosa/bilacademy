@@ -63,7 +63,7 @@
     <div class="hero-content">
         
         <!-- NEW: Split layout wrapper -->
-        <div class="hero-split">
+      <div class="hero-split">
             
             <!-- LEFT: Text content -->
             <div class="hero-text">
@@ -78,19 +78,30 @@
                 <div class="hero-buttons">
                     <a href="https://chat.whatsapp.com/CcaMIzOFxOt74kdMOtMyo8?s=cI&p=a&iIr=4&amv=0" class="btn btn-primary">Join Our Community</a>
                     <a href="About Us.html" class="btn btn-outline">Learn More</a>
+                  <a href="#programDetails" class="btn-details aboutCurrentProgram">
+                          <i class="fas fa-info-circle"></i> Details on Program
+                  </a>
                 </div>
             </div>
 
             <!-- RIGHT: Training Flyer (Clickable) -->
             <div class="hero-flyer">
-                <a href="About Us.html" class="flyer-link" aria-label="View this month's training details">
-                    <img 
-                        src="images/training-flyer.jpg" 
-                        alt="BILA September Edition Training - Solo Pastoring" 
-                        class="flyer-image"
-                    />
+              <a href="About Us.html" class="flyer-link" aria-label="View this month's training details">
+        
+                <!-- Live countdown badge -->
+                  <div class="flyer-badge" id="flyerBadge">
+                     <i class="fas fa-calendar-day"></i>
+                        <span id="daysLeft">Loading...</span>
+                  </div>
+        
+                 <img 
+                    src="images/training-flyer.jpg" 
+                    alt="BILA September Edition Training - Solo Pastoring" 
+                    class="flyer-image"
+                  />
                 </a>
             </div>
+
             
         </div>
         <!-- END split layout -->
@@ -155,6 +166,80 @@
 
     </div>
   </section>
+
+  <!-- ========== PROGRAM DETAILS SECTION ========== -->
+<section class="program-section" id="programDetails">
+    <div class="container">
+        
+        <div class="program-header">
+            <div class="program-header-icon">
+                <i class="fas fa-church"></i>
+            </div>
+            <h2 class="section-title">Upcoming <span>Training Program</span></h2>
+            <p class="program-subtitle">September Edition · Solo Pastoring</p>
+        </div>
+
+        <div class="program-grid">
+
+            <!-- Date & Time -->
+            <div class="program-card">
+                <div class="program-card-icon">
+                    <i class="fas fa-calendar-day"></i>
+                </div>
+                <h3>Date &amp; Time</h3>
+                <p>Sunday, 27th September 2026<br><strong>3:30 PM</strong></p>
+            </div>
+
+            <!-- Location -->
+            <div class="program-card">
+                <div class="program-card-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Venue</h3>
+                <p>
+                    Dream City Christian Centre,<br>
+                    2, Ogiemwanye Avenue Off Nomayo,<br>
+                    Upper Sokponba Road,<br>
+                    Benin City, Edo State.
+                </p>
+            </div>
+
+            <!-- Phone Numbers -->
+            <div class="program-card">
+                <div class="program-card-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h3>Call / WhatsApp</h3>
+                <div class="program-phones">
+                    <a href="tel:+2347030337023"><i class="fas fa-phone"></i> +234 703 033 7023</a>
+                    <a href="tel:+2348082590775"><i class="fas fa-phone"></i> +234 808 259 0775</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="program-actions">
+            <a 
+                href="Contact.html" 
+                target="_blank" 
+                rel="noopener"
+                class="program-btn program-btn-primary"
+            >
+                <i class="fas fa-directions"></i> Get Directions
+            </a>
+            <a 
+                href="https://wa.link/tgtbvn" 
+                target="_blank" 
+                rel="noopener"
+                class="program-btn program-btn-outline"
+            >
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+
+    </div>
+</section>
 
   <!-- ========== WHAT WE DO ========== -->
   <section>

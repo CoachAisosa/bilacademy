@@ -1,18 +1,27 @@
-// ===== HAMBURGER MENU FUNCTIONALITY =====
-const hamburger = document.getElementById('hamburger');
-const navContainer = document.getElementById('navContainer');
+// ============================================================
+// ========== HAMBURGER MENU FUNCTIONALITY ==========
+// ============================================================
 
-// Make sure elements exist
-if (hamburger && navContainer) {
-    // Toggle menu on click
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const navContainer = document.getElementById('navContainer');
+
+    // ⭐ IMPORTANT: Exit early if elements don't exist on this page
+    if (!hamburger || !navContainer) {
+        console.warn('⚠️ Hamburger or navContainer not found on this page');
+        return;
+    }
+
+    console.log('✅ Hamburger menu initialized');
+
+    // ----- Toggle menu on hamburger click -----
     hamburger.addEventListener('click', function(e) {
-        e.stopPropagation();
-        
-        // Toggle classes
+        e.stopPropagation(); // Prevent the document click listener from immediately closing it
+
         this.classList.toggle('active');
         navContainer.classList.toggle('active');
-        
-        // Toggle body scroll
+
+        // Prevent body scroll when menu is open
         if (navContainer.classList.contains('active')) {
             document.body.style.overflow = 'hidden';
         } else {
@@ -20,8 +29,8 @@ if (hamburger && navContainer) {
         }
     });
 
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-container a').forEach(link => {
+    // ----- Close menu when clicking a link -----
+    document.querySelectorAll('.nav-container a').forEach(function(link) {
         link.addEventListener('click', function() {
             hamburger.classList.remove('active');
             navContainer.classList.remove('active');
@@ -29,11 +38,11 @@ if (hamburger && navContainer) {
         });
     });
 
-    // Close menu when clicking outside
+    // ----- Close menu when clicking outside -----
     document.addEventListener('click', function(event) {
         const isClickInsideNav = navContainer.contains(event.target);
         const isClickOnHamburger = hamburger.contains(event.target);
-        
+
         if (!isClickInsideNav && !isClickOnHamburger && navContainer.classList.contains('active')) {
             hamburger.classList.remove('active');
             navContainer.classList.remove('active');
@@ -41,7 +50,7 @@ if (hamburger && navContainer) {
         }
     });
 
-    // Close on ESC key
+    // ----- Close menu on ESC key -----
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape' && navContainer.classList.contains('active')) {
             hamburger.classList.remove('active');
@@ -49,240 +58,196 @@ if (hamburger && navContainer) {
             document.body.style.overflow = 'auto';
         }
     });
-}
-
-hamburger.addEventListener('click', function() {
-    console.log('Hamburger clicked!');
-    console.log('navContainer classes:', navContainer.classList);
-});
-
+}); // ← End of hamburger block
 
 
 // ============================================================
-// ========== FORM SUBMISSION HANDLER ==========
+// ========== FORM SUBMISSION HANDLER (Netlify) ==========
 // ============================================================
 
-// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // ===== GET ALL ELEMENTS =====
+
     const form = document.getElementById('contactForm');
     const successMessage = document.getElementById('successMessage');
-    
-    // ===== CHECK IF ELEMENTS EXIST BEFORE PROCEEDING =====
-    if (!form) {
-        console.error('Form with id "contactForm" not found!');
+
+    // ⭐ If the form isn't on this page, skip everything
+    if (!form || !successMessage) {
+        console.warn('⚠️ Form or success message not found on this page');
         return;
     }
-    
-    if (!successMessage) {
-        console.error('Success message with id "successMessage" not found!');
-        return;
-    }
-    
-    // Get submit button
+
     const submitBtn = form.querySelector('.btn-submit');
     if (!submitBtn) {
-        console.error('Submit button not found in form!');
+        console.error('❌ Submit button not found in form!');
         return;
     }
-    
-    console.log('✅ Form found:', form);
-    console.log('✅ Success message found:', successMessage);
-    console.log('✅ Submit button found:', submitBtn);
-    
-    // ===== FORM SUBMISSION =====
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent page refresh
-        
+
+    console.log('✅ Contact form initialized');
+
+    // ----- Form submission -----
+    form.addEventListener('submit', async function(e) {   // ⭐ async added
+        e.preventDefault();
+
         console.log('📩 Form submitted!');
-        
+
         // Show loading state
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        
-        // Get form data
-        const formData = new FormData(form);
-        // const data = {
-        //     name: formData.get('name') || '',
-        //     email: formData.get('email') || '',
-        //     phone: formData.get('phone') || '',
-        //     subject: formData.get('subject') || '',
-        //     message: formData.get('message') || ''
-        // };
-        
-        // console.log('📋 Form Data:', data);
 
+        // Collect form data
+        const formData = new FormData(form); // ⭐ correct spelling
 
-       // send form to netifly
-     const response = await fetch('/', {
-        method: 'POST',
-        headers:{
-            'Content-Type': 'application/x-www-from-urllencoded'
-        },
-        body: new URLSearchParams(formDAta).toString()
-     });
+        try {
+            // ⭐ Send to Netlify (correct MIME type + spelling)
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded' // ⭐ fixed
+                },
+                body: new URLSearchParams(formData).toString()
+            });
 
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
 
-        // Simulate sending to server
-        setTimeout(function() {
             showSuccess();
-        }, 1500);
+        } catch (error) {
+            console.error('❌ Form submission error:', error);
+
+            // Reset button on failure
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+
+            // Notify user
+            alert('Sorry, something went wrong. Please try again or contact us directly.');
+        }
     });
-    
-    // ===== SHOW SUCCESS FUNCTION =====
+
+    // ----- Show success message -----
     function showSuccess() {
         console.log('✅ Showing success message...');
-        
-        // Hide the form
+
         form.style.display = 'none';
-        
-        // Clear form fields
         form.reset();
-        
-        // Reset button
+
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-        
-        // Show success message
+
         successMessage.style.display = 'block';
-        
-        // Scroll to success message
-        successMessage.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'center' 
-        });
-        
-        console.log('✅ Success message is now visible!');
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-    
-    // ===== RESET FORM FUNCTION =====
+
+    // ----- Reset form (called by "Send Another Message" button) -----
     window.resetForm = function() {
         console.log('🔄 Resetting form...');
-        
-        // Hide success message
+
         successMessage.style.display = 'none';
-        
-        // Show form
         form.style.display = 'block';
-        
-        // Clear form
         form.reset();
-        
-        // Reset button
+
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-        
-        // Scroll to form
-        form.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'center' 
-        });
-        
-        console.log('🔄 Form reset complete!');
+
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
     };
-    
-    // ===== REAL-TIME VALIDATION =====
-    // Check if inputs exist before adding event listeners
-    const inputs = form.querySelectorAll('input, textarea');
-    if (inputs.length > 0) {
-        inputs.forEach(function(field) {
-            field.addEventListener('input', function() {
-                const parent = this.closest('.form-group');
-                if (parent && parent.classList.contains('error')) {
-                    parent.classList.remove('error');
-                }
-            });
+
+    // ----- Clear error state on input -----
+    form.querySelectorAll('input, textarea').forEach(function(field) {
+        field.addEventListener('input', function() {
+            const parent = this.closest('.form-group');
+            if (parent && parent.classList.contains('error')) {
+                parent.classList.remove('error');
+            }
         });
-        console.log('✅ Validation added to', inputs.length, 'fields');
-    } else {
-        console.warn('⚠️ No input fields found in form');
+    });
+}); // ← End of form block
+
+
+// ============================================================
+// ========== LIGHTBOX (Gallery Page Only) ==========
+// ============================================================
+
+(function() {
+    const galleryImages = document.querySelectorAll('.gallery-grid img');
+    const lightbox = document.getElementById('lightbox');
+
+    // ⭐ EXIT EARLY if this isn't the gallery page
+    if (!lightbox || galleryImages.length === 0) {
+        return;
     }
-    
-    console.log('✅ Form is ready!');
-});
+
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeLightbox');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const counter = document.getElementById('counter');
+
+    // ⭐ Exit if critical elements missing
+    if (!lightboxImg || !closeBtn) {
+        console.warn('⚠️ Lightbox elements missing');
+        return;
+    }
+
+    let currentIndex = 0;
+    const allImages = [];
+
+    galleryImages.forEach(function(img) {
+        allImages.push(img.src);
+    });
+
+    console.log('✅ Lightbox initialized with', allImages.length, 'images');
+
+    function openLightbox(index) {
+        if (index < 0) index = allImages.length - 1;
+        if (index >= allImages.length) index = 0;
+        currentIndex = index;
+
+        lightboxImg.src = allImages[currentIndex];
+        if (counter) {
+            counter.textContent = (currentIndex + 1) + ' / ' + allImages.length;
+        }
+
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    function prevImage() { openLightbox(currentIndex - 1); }
+    function nextImage() { openLightbox(currentIndex + 1); }
+
+    galleryImages.forEach(function(img, index) {
+        img.addEventListener('click', function(e) {
+            e.preventDefault();
+            openLightbox(index);
+        });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    if (prevBtn) prevBtn.addEventListener('click', prevImage);
+    if (nextBtn) nextBtn.addEventListener('click', nextImage);
+
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+    });
+
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+    });
+})(); // ← End of lightbox block
 
 
-//  <!-- ========== LIGHTBOX JAVASCRIPT ========== -->
+// ============================================================
+// ========== AUTO-UPDATE COPYRIGHT YEAR ==========
+// ============================================================
 
-        (function() {
-            // Collect all gallery images
-            const galleryImages = document.querySelectorAll('.gallery-grid img');
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightboxImg');
-            const closeBtn = document.getElementById('closeLightbox');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const counter = document.getElementById('counter');
-
-            let currentIndex = 0;
-            let allImages = [];
-
-            // Build array of image sources
-            galleryImages.forEach(img => {
-                allImages.push(img.src);
-            });
-
-            // Open lightbox
-            function openLightbox(index) {
-                if (index < 0) index = allImages.length - 1;
-                if (index >= allImages.length) index = 0;
-                currentIndex = index;
-                lightboxImg.src = allImages[currentIndex];
-                counter.textContent = `${currentIndex + 1} / ${allImages.length}`;
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-
-            // Close lightbox
-            function closeLightbox() {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-
-            // Navigate
-            function prevImage() {
-                openLightbox(currentIndex - 1);
-            }
-
-            function nextImage() {
-                openLightbox(currentIndex + 1);
-            }
-
-            // Event listeners for gallery images
-            galleryImages.forEach((img, index) => {
-                img.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    openLightbox(index);
-                });
-            });
-
-            // Close button
-            closeBtn.addEventListener('click', closeLightbox);
-
-            // Navigation buttons
-            prevBtn.addEventListener('click', prevImage);
-            nextBtn.addEventListener('click', nextImage);
-
-            // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
-                if (!lightbox.classList.contains('active')) return;
-                if (e.key === 'Escape') closeLightbox();
-                if (e.key === 'ArrowLeft') prevImage();
-                if (e.key === 'ArrowRight') nextImage();
-            });
-
-            // Close on click outside image
-            lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
-            });
-
-        })();
-
-
-        // Auto-update copyright year
 document.addEventListener('DOMContentLoaded', function() {
     const yearSpan = document.getElementById('currentYear');
     if (yearSpan) {
@@ -290,4 +255,121 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+
+// ============================================================
+// ========== TRAINING COUNTDOWN BADGE ==========
+// ============================================================
+
+(function() {
+    const badge = document.getElementById('flyerBadge');
+    const daysLeftSpan = document.getElementById('daysLeft');
+    
+    // Exit if badge isn't on this page
+    if (!badge || !daysLeftSpan) return;
+    
+    // ⭐⭐⭐ UPDATE THIS DATE EACH MONTH ⭐⭐⭐
+    // Format: "YYYY-MM-DDTHH:MM:SS"
+    const TRAINING_DATE = "2026-09-27T15:30:00";
+    
+    function updateCountdown() {
+        const now = new Date();
+        const trainingDate = new Date(TRAINING_DATE);
+        
+        // Calculate difference in milliseconds
+        const diffMs = trainingDate - now;
+        const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+        const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+        
+        // Reset classes (remove old state classes)
+        badge.classList.remove('today', 'soon', 'expired');
+        
+        // Determine what message to show
+        let message = '';
+        let icon = 'fa-calendar-day';
+        
+        if (diffMs < 0) {
+            // Training date has passed
+            message = 'Training has started';
+            badge.classList.add('expired');
+            icon = 'fa-check-circle';
+            
+        } else if (diffDays === 0) {
+            // Training is TODAY
+            message = 'Training is TODAY!';
+            badge.classList.add('today');
+            icon = 'fa-bell';
+            
+        } else if (diffDays === 1) {
+            // Tomorrow
+            message = 'Training is TOMORROW!';
+            badge.classList.add('soon');
+            icon = 'fa-bell';
+            
+        } else if (diffDays <= 7) {
+            // Within a week - check if it's Sunday
+            const dayName = trainingDate.toLocaleDateString('en-US', { weekday: 'long' });
+            message = 'Training is this ' + dayName + '!';
+            badge.classList.add('soon');
+            icon = 'fa-bell';
+            
+        } else if (diffDays <= 30) {
+            // Within a month
+            message = diffDays + ' days to go!';
+            icon = 'fa-calendar-day';
+            
+        } else {
+            // More than a month away
+            const weeks = Math.ceil(diffDays / 7);
+            message = weeks + ' weeks to go!';
+            icon = 'fa-calendar-alt';
+        }
+        
+        // Update the badge
+        badge.innerHTML = '<i class="fas ' + icon + '"></i><span id="daysLeft">' + message + '</span>';
+    }
+    
+    // Run immediately
+    updateCountdown();
+    
+    // Update every minute (so it stays fresh if user leaves tab open)
+    setInterval(updateCountdown, 60000);
+    
+    console.log('✅ Training countdown initialized');
+})();
+
+
+// ============================================================
+// ========== PROGRAM DETAILS - SCROLL TO SECTION ==========
+// ============================================================
+
+(function() {
+    const openBtn = document.querySelector('.aboutCurrentProgram');
+    const programSection = document.getElementById('programDetails');
+
+    // Exit if either element is missing (safe on other pages)
+    if (!openBtn || !programSection) {
+        console.warn('⚠️ Program details button or section not found');
+        return;
+    }
+
+    console.log('✅ Program details scroll initialized');
+
+    // Scroll to program section when button is clicked
+    openBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Smooth scroll to section
+        programSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+
+        // Optional: add a highlight pulse to draw attention
+        programSection.classList.add('highlight');
+        setTimeout(() => {
+            programSection.classList.remove('highlight');
+        }, 2000);
+    });
+})();
 
